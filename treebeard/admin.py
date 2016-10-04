@@ -1,9 +1,14 @@
 """Django admin support for treebeard"""
 
 import sys
+import django
 
 from django.conf import settings
-from django.conf.urls import patterns, url
+
+if django.VERSION < (1, 10):
+    from django.conf.urls import patterns, url
+else:
+    from django.conf.urls import url
 
 from django.contrib import admin, messages
 from django.http import HttpResponse, HttpResponseBadRequest
